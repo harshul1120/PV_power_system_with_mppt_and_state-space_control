@@ -1,15 +1,68 @@
-# PV Generator Dynamic Model
-MATLAB | Simulink project where a photovoltaic generator system is modelled directly. Both a temperature and irradiance distribution is fed into a Solar Array module from Matlab. The positive and negative terminals feed into a boost converter electrical circuit, and the digital outputs are used for two purposes. The digital output array voltage and current are used to determine appropriate cycle based upon an MPPT algorithm. The duty cycle then feeds to a PWM signal generator and back to a MOSFET in the boost converter circuit. It should be noted that the electrical circuit terminates at a battery. The digital outputs are also fed into a state-feedback controller mimicking a charge controller. Altogether, several PV generator parameter system variables are monitored, and this framework can act as a useful tool for designing such a system
+# PV Generator Dynamic Model (MATLAB/Simulink)
 
-Note the entire model below
-![](Capture.PNG)
-To run the 120 second simulation, one must first run either 'statespace_ackerman_setup.m' or 'statespaceLQRsetup.m'. Both similarly initialize workspace variables, but determine the controller feedback gain differently.
+## Overview
+This project presents a dynamic simulation of a photovoltaic (PV) power generation system using MATLAB and Simulink. The model incorporates environmental inputs such as irradiance and temperature to simulate real-world operating conditions.
 
-'passiveparams_overVin&Iin.m' and 'passive_parameters_overduty.m' can be used to determine appropriate sizing for electrical circuit elements.
+The system integrates a boost converter, MPPT algorithm, battery storage, and state-space control to achieve efficient power extraction and stable system performance.
 
-## Built With
+---
 
-* [Matlab R2019b](https://www.mathworks.com/products/matlab/whatsnew.html) - Matlab version used
-* [Simulink](https://www.mathworks.com/products/simulink.html) - Model block simulating module (Version 10.0)
-* [Control Systems Toolbox](https://www.mathworks.com/products/control.html) - Required toolbox for controller tuning
+## Key Features
+- Dynamic PV system modeling using irradiance and temperature inputs  
+- Implementation of MPPT algorithms for maximum power extraction  
+- Boost converter design with PWM-based control  
+- Battery integration for energy storage  
+- State-space control using LQR and pole placement techniques  
+- Monitoring of system parameters such as voltage, current, and power  
+
+---
+
+## System Architecture
+1. Environmental inputs (irradiance and temperature) are fed into the PV array  
+2. PV output voltage and current are measured  
+3. MPPT algorithm determines optimal duty cycle  
+4. PWM generator controls the boost converter  
+5. Boost converter regulates output voltage  
+6. Battery stores generated energy  
+7. State-space controller ensures system stability  
+
+---
+
+## Simulation Setup
+To run the simulation:
+
+1. Run either:
+   - `statespace_ackerman_setup.m`  
+   - `statespaceLQRsetup.m`  
+
+2. Open the Simulink model and run the simulation  
+
+---
+
+## Component Design
+The following scripts are used for designing system components:
+
+- `passiveparams_overVin&Iin.m` → Inductor and capacitor sizing based on input conditions  
+- `passive_parameters_overduty.m` → Parameter variation with duty cycle  
+
+---
+
+## Tools & Technologies
+- MATLAB R2019b  
+- Simulink  
+- Control Systems Toolbox  
+
+---
+
+## Learning Outcomes
+- Understanding of photovoltaic system modeling  
+- Practical implementation of MPPT techniques  
+- Design and control of boost converters  
+- Application of state-space control methods (LQR, pole placement)  
+- System-level analysis of renewable energy systems  
+
+---
+
+## Conclusion
+This project demonstrates an integrated approach to photovoltaic power system design, combining power electronics, control systems, and optimization techniques. It provides a framework for analyzing and improving the performance of solar energy systems under varying conditions.
 
